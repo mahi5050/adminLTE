@@ -14,8 +14,8 @@ class LeaderController extends Controller
      */
     public function index()
     {
-         $leader =Leader::all();
-         return view('leader.leader_index',['leader'=>$leader]);
+         $leader =Leader::latest()->paginate(5);
+         return view('leader.emp_index',compact('leader'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -25,7 +25,7 @@ class LeaderController extends Controller
      */
     public function create()
     {
-        return view('leader.leader_create');
+        return view('leader.emp_create');
     }
 
     /**
@@ -39,11 +39,11 @@ class LeaderController extends Controller
         $request->validate([
             'name' => 'required',
             'email'=> 'required',
-            'password'=> 'required',
-            'department'=>'required',
+          
         ]);
-        $leader = Leader::create(['name'=>$request->name, 'email'=>$request->email, 'password'=>$request->password, 'department'=>$request->department]);
+       Leader::create($request->all());
         return redirect('/leader');
+
     }
 
     /**
@@ -65,7 +65,7 @@ class LeaderController extends Controller
      */
     public function edit(Leader $leader)
     {
-        return view('leader.leader_edit');
+        return view('leader.leader_edit',compact('leader'));
     }
 
     /**
@@ -83,13 +83,14 @@ class LeaderController extends Controller
             'password'=> 'required',
             'department'=>'required',
         ]);
-        $leader->name = $request->name;
-        $leader->email = $request->email;
-        $leader->password = $request->password;
-        $leader->active = $request->active;
-        $leader->department = $request->department;
-        $leader->same();
-        return redirect('leader');
+        // $leader->name = $request->name;
+        // $leader->email = $request->email;
+        // $leader->password = $request->password;
+        // $leader->active = $request->active;
+        // $leader->department = $request->department;
+        // $leader->save();
+        $leader->update($request->all());
+        return redirect('/leader');
     }
 
     /**

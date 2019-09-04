@@ -21,15 +21,21 @@ Route::get('/', function () {
 
 
 Route::group(['prefixmiddleware' => ['admin']], function(){
-Route::get('/admin', function () {
-    return view('admin');
+Route::get('/adminpanel', function () {
+    return view('admin.adminpanel');
 });
-Route::get('/home', function (){
-    return view('home');
+Route::get('/leaderpanel', function (){
+    return view('leader.leaderpanel');
 });
 });
 
 Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('leader','LeaderController');
+// Route::resource('leader','LeaderController');
+// Route::resource('employee','EmployeeController');
+Route::get('leader_home',function(){
+    return view('/emp.employee_index');
+});
+
+

@@ -1,4 +1,4 @@
-@extends('layouts.header')
+@extends('leader.header')
 @section('sidebar')
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -36,8 +36,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="/user_data.usertable"><i class="fa fa-circle-o"></i>User Data</a></li>
-            <li class="active"><a href="leader"><i class="fa fa-circle-o"></i>Create Leader</a></li>
+            <li class="active"><a href="/leader.emp_index"><i class="fa fa-circle-o"></i>Employee Data</a></li>
+            <!-- <li class="active"><a href="leader"><i class="fa fa-circle-o"></i>Create Leader</a></li> -->
           </ul>
         </li>
         <li class="treeview">

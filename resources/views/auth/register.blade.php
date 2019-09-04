@@ -60,7 +60,25 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="department" class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
 
+                            <div class="col-md-6">
+                                <!-- <input  class="form-control @error('department') is-invalid @enderror" name="department" value="{{ old('department') }}" required autocomplete="department" autofocus> -->
+                                <select class="form-control @error('department') is-invalid @enderror" name="department" id="department" required autocomplete="department" autofocus>
+                                    <option value="CS">CS</option>
+                                    <option value="IT">IT</option>
+                                    <option value="EC">EC</option>
+                                    <option value="Mech">Mech</option>
+                                    <option value="Civil">Civil</option>
+                                </select>
+                                @error('department')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

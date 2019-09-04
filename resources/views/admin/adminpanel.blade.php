@@ -1,4 +1,4 @@
-@include('layouts.sidebar')
+@include('admin.sidebar')
   <!-- Left side column. contains the logo and sidebar -->
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -520,4 +520,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-@extends('layouts.footer')
+@extends('admin.footer')

@@ -1,4 +1,4 @@
-@include('layouts.sidebar')
+@include('admin.sidebar')
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -69,4 +69,4 @@
 
         </section>
     </div>
-@include('layouts.footer')
+@include('admin.footer')

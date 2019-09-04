@@ -1,15 +1,15 @@
- @include('layouts.sidebar')
+@include('layouts.sidebar')
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Leader
-            <small>Add leader</small>
+            Employee
+            <small>Add Employee</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-            <li><a href="/leader"><i class="fa fa-table"></i> Leader-table</a></li>
-            <li class="active">Add Leader</li>
+            <li><a href="/leader"><i class="fa fa-table"></i> Employee-table</a></li>
+            <li class="active">Add Employee</li>
           </ol>
         </section>
        
@@ -18,7 +18,7 @@
 
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/leader') }}">
+                    <form method="POST" action="{{ url('/employee') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -47,46 +47,22 @@
                                 </span>
                                @enderror
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                    <strong>{{$message}}</strong>
-                                    </span>
-                                    @enderror
-                             
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="department" class="col-md-4 col-form-label text-md-right">{{ __('department') }}</label>
-
-                            <div class="col-md-6">
-                                   
-                                <select name="department" class="form-control" id="department" required>
-                                    <option value="CS">CS</option>
-                                    <option value="IT">IT</option>
-                                    <option value="EEE">EEE</option>
-                                    <option value="Mech">Mech</option>
-                                    <option value="Civil">Civil</option>
-                                </select>
-                               
-                            </div>
-                        </div>
+                        </div>  
                         
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('email') }}" required autocomplete="phone">
+
+                                @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                <strong>{{$message}}</strong>
+                                </span>
+                               @enderror
+                            </div>
+                        </div> 
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

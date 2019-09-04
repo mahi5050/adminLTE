@@ -1,3 +1,4 @@
++
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -17,9 +18,9 @@ class CreateLeadersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
-            $table->string('password');
-            $table->boolean('active')->default(true);
-            $table->string('department');
+            $table->string('phone');
+            // $table->boolean('active')->default(true);
+            // $table->string('department');
             $table->timestamps();
         });
     }
