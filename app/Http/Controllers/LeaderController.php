@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Leader;
+use App\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class LeaderController extends Controller
 {
@@ -13,9 +15,13 @@ class LeaderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-         $leader =Leader::latest()->paginate(5);
-         return view('leader.emp_index',compact('leader'))->with('i', (request()->input('page', 1) - 1) * 5);
+    {   
+         $id = Auth::user()->id;
+        $user  = User::where('id','=',$id)->first();
+        $user->employe()->where('p_id','=',$id)->get();
+        // re turn $user;
+         $leader =Leader::where('p_id','=',$id)->latest()->paginate(5);
+         return view('leader.emp_index',compact('leader','user'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -25,7 +31,9 @@ class LeaderController extends Controller
      */
     public function create()
     {
-        return view('leader.emp_create');
+        $user =User::all();
+        // dd($user);
+        return view('leader.emp_create',['user'=>$user]);
     }
 
     /**
@@ -36,12 +44,21 @@ class LeaderController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $request->validate([
             'name' => 'required',
             'email'=> 'required',
           
         ]);
-       Leader::create($request->all());
+        $id = Auth::user()->id;
+        
+          $user  = User::where('id','=',$id)->first();
+          $user->employe()->create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone]);
+        //   $r = $user->employe()->where('p_id','=',$id)->get();
+    //        return $r;
+    //    Leader::create($request->all()); 
+       
         return redirect('/leader');
 
     }
@@ -63,9 +80,10 @@ class LeaderController extends Controller
      * @param  \App\Leader  $leader
      * @return \Illuminate\Http\Response
      */
-    public function edit(Leader $leader)
+    public function edit(Leader $leader, user $user)
     {
-        return view('leader.leader_edit',compact('leader'));
+        $user =User::all();
+        return view('/leader/emp_edit',compact('leader','user'));
     }
 
     /**
@@ -80,8 +98,7 @@ class LeaderController extends Controller
         $request->validate([
             'name' => 'required',
             'email'=> 'required',
-            'password'=> 'required',
-            'department'=>'required',
+            
         ]);
         // $leader->name = $request->name;
         // $leader->email = $request->email;
@@ -90,7 +107,7 @@ class LeaderController extends Controller
         // $leader->department = $request->department;
         // $leader->save();
         $leader->update($request->all());
-        return redirect('/leader');
+        return redirect('/leader');     
     }
 
     /**
@@ -103,5 +120,10 @@ class LeaderController extends Controller
     {
         $leader->delete();
         return redirect('/leader');
+    }
+    public function createemp(Request $request)
+    {
+        return $request;
+    //    User::where('id','=',Auth::user()->id)->create_employe()->create(['name'=>$request]);
     }
 }

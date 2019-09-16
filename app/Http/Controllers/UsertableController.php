@@ -1,11 +1,49 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Leader;
 use Illuminate\Http\Request;
 use DB;
 class UsertableController extends Controller
 {
+// public function index()
+// {
+//      $leader =Leader::latest()->paginate(5);
+//      return view('leader.emp_index',compact('leader'))->with('i', (request()->input('page', 1) - 1) * 5);
+// }
+
+// /**
+//  * Show the form for creating a new resource.
+//  *
+//  * @return \Illuminate\Http\Response
+//  */
+// public function create()
+// {
+//     $user =User::all();
+//     // dd($user);
+//     return view('leader.emp_create',['user'=>$user]);
+// }
+
+// /**
+//  * Store a newly created resource in storage.
+//  *
+//  * @param  \Illuminate\Http\Request  $request
+//  * @return \Illuminate\Http\Response
+//  */
+// public function store(Request $request)
+// {
+//     $request->validate([
+//         'name' => 'required',
+//         'email'=> 'required',
+      
+//     ]);
+    
+//    Leader::create($request->all());
+   
+//     return redirect('/leader');
+
+// }
+  
     public function show(){
         $user= DB::select('select * from users');
         return view('user_data.usertable',['user'=>$user]);

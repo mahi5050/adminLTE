@@ -15,10 +15,12 @@ class CreateLeadersTable extends Migration
     public function up()
     {
         Schema::create('leaders', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id')->unsigned();
             $table->string('name');
             $table->string('email');
             $table->string('phone');
+            $table->Integer('p_id');
+           
             // $table->boolean('active')->default(true);
             // $table->string('department');
             $table->timestamps();

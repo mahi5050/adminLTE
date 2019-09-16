@@ -28,6 +28,8 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>Active</th>
+                            <th>Department</th>
                             <th>Actions</th>
                           </tr>
                           </thead>
@@ -37,6 +39,8 @@
                           <td>{{$usr->name}}</td>
                           <td>{{$usr->email}}</td>
                           <td>{{$usr->role}}</td>
+                          <td>{{$usr->active}}</td>
+                          <td>{{$usr->department}}</td>
                           <td><a class="fa fa-lg fa-edit btn btn-primary" href="/edit/{{$usr->id}}"></a>
                            <a class="fa fa-lg fa-trash btn btn-danger" href ="/destroy/{{$usr->id}}"></a></td>
                           </tr>

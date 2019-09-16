@@ -36,4 +36,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public function leaders()
+    // {
+    //     return $this->belongsToMany(Leader::class, 'user_leader');
+    // }
+    public function employe()
+    {
+        return $this->hasMany('App\Leader','p_id','id');
+    }
+
+    public function report()
+    {
+        return $this->hasMany('App\report','p_id','id');
+    }
 }

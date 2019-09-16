@@ -71,5 +71,6 @@ class RegisterController extends Controller
             'active' => "1",
             'department' => $data['department'],
         ]);
+        
     }
 }

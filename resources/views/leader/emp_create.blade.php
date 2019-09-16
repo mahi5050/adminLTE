@@ -1,11 +1,8 @@
-@include('layouts.sidebar')
+@include('leader.sidebar')
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-            Employee
-            <small>Add Employee</small>
-          </h1>
+          <h1>Employee<small>Add Employee</small></h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="/leader"><i class="fa fa-table"></i> Employee-table</a></li>
@@ -15,10 +12,9 @@
        
        <section class="content">
        <div class="card">
-
-
-                <div class="card-body">
-                    <form method="POST" action="{{ url('/employee') }}">
+     
+               <div class="card-body">
+                    <form method="POST" action="{{ url('/leader') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -62,11 +58,10 @@
                                @enderror
                             </div>
                         </div> 
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn btn-primary fa fa-user-plus">
+                                    {{ __('Add employee') }}
                                 </button>
                             </div>
                         </div>
@@ -77,4 +72,4 @@
        </section>
         </div>
 
-@include('layouts.footer')
+@include('leader.footer')

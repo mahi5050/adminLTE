@@ -31,11 +31,11 @@ Route::get('/leaderpanel', function (){
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
-// Route::resource('leader','LeaderController');
+Route::resource('report','ReportController');
+Route::resource('leader','LeaderController');
 // Route::resource('employee','EmployeeController');
-Route::get('leader_home',function(){
-    return view('/emp.employee_index');
-});
+// Route::get('leader_home',function(){
+//     return view('/emp.employee_index');
+// });
 
 
