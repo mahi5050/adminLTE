@@ -51,7 +51,6 @@ class ReportController extends Controller
         $user = User::where('id','=',$id)->first();
         $user->employe()->create(['date'=>$request->date,'sale'=>$request->sale,'employee'=>$request->employee]);
         return redirect('/report');
-
     }
 
     /**
