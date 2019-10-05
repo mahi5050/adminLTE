@@ -45,21 +45,51 @@ class LeaderController extends Controller
     public function store(Request $request)
     {
 
-
-        $request->validate([
-            'name' => 'required',
-            'email'=> 'required',
+        if($request->ajax())
+        {
+         $rules = array(
+          'first_name.*'  => 'required',
+          'last_name.*'  => 'required'
+         );
+         $error = Validator::make($request->all(), $rules);
+         if($error->fails())
+         {
+          return response()->json([
+           'error'  => $error->errors()->all()
+          ]);
+         }
+   
+         $first_name = $request->first_name;
+         $last_name = $request->last_name;
+         for($count = 0; $count < count($first_name); $count++)
+         {
+          $data = array(
+           'first_name' => $first_name[$count],
+           'last_name'  => $last_name[$count]
+          );
+          $insert_data[] = $data; 
+         }
+   
+         DynamicField::insert($insert_data);
+         return response()->json([
+          'success'  => 'Data Added successfully.'
+         ]);
+        }
+       }
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'email'=> 'required',
           
-        ]);
-        $id = Auth::user()->id;
+    //     ]);
+    //     $id = Auth::user()->id;
         
-          $user  = User::where('id','=',$id)->first();
-          $user->employe()->create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone]);
-        //   $r = $user->employe()->where('p_id','=',$id)->get();
-    //        return $r;
-    //    Leader::create($request->all()); 
+    //       $user  = User::where('id','=',$id)->first();
+    //       $user->employe()->create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone]);
+    //     //   $r = $user->employe()->where('p_id','=',$id)->get();
+    // //        return $r;
+    // //    Leader::create($request->all()); 
        
-        return redirect('/leader');
+    //     return redirect('/leader');
 
     }
 

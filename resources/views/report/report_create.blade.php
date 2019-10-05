@@ -26,34 +26,50 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="sale" class="col-md-4 col-form-label text-md-right">{{ __('Sale') }}</label>
+                            <label for="employee" class="col-md-4 col-form-label text-md-right">{{ __('employee') }}</label>
 
-                            <div class="col-md-6">
+                          
+                        <div class="box-body">
+                <table id="example2" class="table table-bordered background-color-black table-hover text-center h3">
+                        <thead>
+                            <tr>
+                                <th>Sale</th>
+                                <th>Employee</th>
+                                <th>Actions</th>
+                            </tr>    
+                        </thead>
+                        <tbody>
+                       <tr class="form-group">
+                            <td>
+                             
                                 <input id="sale" type="text" class="form-control @error('sale') is-invalid @enderror" name="sale" value="{{ old('sale') }}" required autocomplete="sale">
-
                                 @error('sale')
                                 <span class="invalid-feedback" role="alert">
                                 <strong>{{$message}}</strong>
                                 </span>
                                @enderror
-                            </div>
-                        </div>  
                         
-                        <div class="form-group row">
-                            <label for="employee" class="col-md-4 col-form-label text-md-right">{{ __('employee') }}</label>
-
-                            <div class="col-md-6">
+                            </td>
+                            <td class="form-group row">
+                            
                                 <!-- <input id="employee" type="employee" class="form-control @error('employee') is-invalid @enderror" date="employee" value="{{ old('sale') }}" required autocomplete="employee"> -->
                                 <select name="employeee" id="employeee">
                               @foreach($user as $us)
                                <option value="{{$us->id}}">{{$us->name}}</option>
                               @endforeach
                                 </select>
-                               
-                            </div>
-                        </div> 
+              
+                            </td>
+                            <td>
+                            <a> <div class="btn btn-primary fa fa-plus-circle"></div> </a> 
+                            <a> <div class="btn btn-danger fa fa-minus-circle"></div> </a> 
+                            </td>
+                       </tr>
+                       </tbody>
+                </table>
+                
+            </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary fa fa-user-plus">
@@ -66,4 +82,5 @@
         </div>
         </section>
     </div>
+
 @include('leader.footer')
