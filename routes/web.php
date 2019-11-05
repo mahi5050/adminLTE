@@ -39,3 +39,4 @@ Route::resource('leader','LeaderController');
 // });
 
 
+// Route::post("report","HomeController@addMorePost");
