@@ -133,7 +133,7 @@
       }
     });  
 </script>
-        </section>
+</section>
     </div>
 
 @include('leader.footer')
