@@ -13,10 +13,10 @@
             <div class="col-xs-12">
             <div class="box">
             <div class="box-header">
-            <h3 class="box-title">All Employee</h3>
+            <h3 class="box-title">All Reports</h3>
             </div>
             <div class="col-sm-12 m-auto">
-           <a class="btn lg btn-primary fa fa-user-plus" href="/report/create"><b> Add New Report </b></a>
+           <a class="btn lg btn-primary fa fa-user-plus" href='report/create'><b> Add New Report </b></a>
            </div>
            <br>
             <div class="box-body">
@@ -37,19 +37,18 @@
                                 <td>{{$report->sale}}</td>
                                 <td>{{$report->employee}}</td>
                                 <td>{{$report->p_id}}</td>
-                                <!-- <td>
+                                <td>
                                 <form action="{{url('leader',[$report->id])}}" method="post">
                                 <a class="fa fa-edit btn btn-primary" href="{{route('leader.edit',[$report->id])}}"></a>
                                 @csrf
                                 @method('Delete')
                                 <button type="submit" class="fa fa-trash btn btn-danger"></button>
                                 </form>
-                                </td> -->
+                                </td>
                             </tr>
                         </tbody>
                         @endforeach
                 </table>
-                
             </div>
             </div>
             </div>

@@ -11,7 +11,7 @@
         <section class="content">
         <div class="container">
     <div class="form-group">
-         <form name="add_sale" id="" method="POST" action="{{ url('/report') }}">  
+         <form name="add_sale" id="" method="POST" action="{{ url('report') }}">  
          @csrf
     
             <div class="form-group row">
