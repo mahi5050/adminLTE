@@ -38,8 +38,8 @@
                                 <td>{{$report->employee}}</td>
                                 <td>{{$report->p_id}}</td>
                                 <td>
-                                <form action="{{url('leader',[$report->id])}}" method="post">
-                                <a class="fa fa-edit btn btn-primary" href="{{route('leader.edit',[$report->id])}}"></a>
+                                <form action="{{url('report',[$report->id])}}" method="post">
+                                <a class="fa fa-edit btn btn-primary" href="{{route('report.edit',[$report->id])}}"></a>
                                 @csrf
                                 @method('Delete')
                                 <button type="submit" class="fa fa-trash btn btn-danger"></button>

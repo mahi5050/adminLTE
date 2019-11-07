@@ -47,11 +47,13 @@
 
                             <div class="col-md-6">
                                 <!-- <input id="employe" type="employe" class="form-control @error('employee') is-invalid @enderror" date="employe" value="{{ old('sale') }}" required autocomplete="employe"> -->
-                                <select class="form-control @error('employee') is-invalid @enderror" name="employee" id="employee" required>
-                              @foreach($leader as $lead)
-                              <option value="{{$lead->name}}"{{($lead->name==old('lead')?'selected="selected"':'')}}>{{$lead->name}}</option>
-                              @endforeach
-                                </select>
+                                <!-- <select class="form-control @error('employee') is-invalid @enderror" name="employee" id="employee" required> -->
+                              <!-- @foreach($user as $lead)
+                              <option value="{{$lead->name}}" {{ ( $lead->name == 'lead') ? 'selected':''}}>{{$lead->name}}</option>
+                              @endforeach -->
+                              <input id="employee" type="text" class="form-control @error('employee') is-invalid @enderror" name="employee" value="{{ $report->employee }}" required >
+
+                                <!-- </select> -->
                                 
                                 @error('employee')
                                 <span class="invalid-feedback" role="alert">

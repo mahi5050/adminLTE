@@ -81,7 +81,8 @@ class ReportController extends Controller
      */
     public function edit(Report $report)
     {
-        //
+        $user = User::all();
+        return view('report/report_edit',compact('report','user'));
     }
 
     /**
@@ -93,7 +94,9 @@ class ReportController extends Controller
      */
     public function update(Request $request, Report $report)
     {
-        //
+      
+        $report->update($request->all());
+        return redirect('report');  
     }
 
     /**
@@ -104,6 +107,7 @@ class ReportController extends Controller
      */
     public function destroy(Report $report)
     {
-        //
+        $report -> delete();
+        return redirect('report');
     }
 }
