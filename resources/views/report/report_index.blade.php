@@ -16,7 +16,7 @@
             <h3 class="box-title">All Reports</h3>
             </div>
             <div class="col-sm-12 m-auto">
-           <a class="btn lg btn-primary fa fa-user-plus" href='report/create'><b> Add New Report </b></a>
+           <a class="btn lg btn-primary fa fa-user-plus" href="/report/create"><b> Add New Report </b></a>
            </div>
            <br>
             <div class="box-body">
@@ -30,7 +30,7 @@
                                 <th>Actions</th>
                             </tr>    
                         </thead>
-                        @foreach($report as $report)
+                        @foreach($reports as $report)
                         <tbody> 
                             <tr>
                                 <td>{{$report->date}}</td>
@@ -49,6 +49,7 @@
                         </tbody>
                         @endforeach
                 </table>
+                {!! $reports->links() !!}
             </div>
             </div>
             </div>

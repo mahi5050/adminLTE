@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Leader;
 use App\Report;
 use App\User;
 use Auth;
@@ -16,13 +15,13 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $id = Auth::user()->name;
-        $user  = User::where('name','=',$id)->first();
+        $id = Auth::user()->id;
+        $user = User::where('id','=',$id)->first();
         $user->employe()->where('p_id','=',$id)->get();
-        $report = Report::all();
-        return view('report.report_index',compact('report','user'));
-        // $report = Report::where('p_id','=',$id)->latest()->paginate(5);
-        // return view ('report.report_index',compact('report','user'))->with('i', (request()->input('page', 1) -1 ) * 5);
+        // $report = Report::all();
+        // return view('report.report_index',compact('report','user'));
+        $reports =Report::where('p_id','=',$id)->latest()->paginate(5);
+        return view('report.report_index', compact('reports','user'))->with('i', (request()->input('page', 1) -1 ) * 5);
     }
 
     /**

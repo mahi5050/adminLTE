@@ -18,7 +18,7 @@
                             <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Date') }}</label>
 
                             <div class="col-md-6">
-                                <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date[]" value="{{ old('date') }}">
+                                <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date[]" value="{{ old('date') }}" required>
 
                                 @error('date')
                                 <span class="invalid-feedback" role="alert">
